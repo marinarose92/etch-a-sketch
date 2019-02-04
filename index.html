@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <style type="text/css">
+        body {
+            margin: 0 auto;
+            width:100%;
+        }
+        #container {
+            width:100%;
+        }
+        .color {
+            background-color: black;
+        }
+        .grid {
+            position:aboslute;
+            left:50%;
+            margin-left:400px;
+        }
+        .btn {
+            display:flex;
+            justify-content:center;
+            margin-top:10px;
+            margin-left:400px;
+            border-radius:10px;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+        </div>
+    </body>
+    <script>
+const container = document.querySelector('#container');
+
+const buttonDiv = document.createElement('div');
+container.appendChild(buttonDiv);
+container.style.width = "800px";
+buttonDiv.style.margin = "0 auto";
+buttonDiv.style.width = "50";
+
+const button = document.createElement('button');
+buttonDiv.appendChild(button);
+button.innerHTML = "Clear";
+button.classList.add('btn');
+button.style.position = "block";
+button.style.marginBottom = "50px";
+button.style.fontSize = "30px";
+
+var num = 16;
+
+function firstGrid (num) {
+    if (num > 100) {
+            num = 100;
+        };
+let square = Math.pow(num, 2);
+
+const grid = document.createElement('div');
+grid.classList.add('grid');
+container.appendChild(grid);
+
+  for (i = 1; i <= square; i++) {
+
+    const div = document.createElement('div');
+        grid.appendChild(div);
+        grid.style.backgroundColor = "pink";
+        grid.style.width = "800px";
+        grid.style.height = "800px";
+        grid.style.border = "1px solid black"
+        div.style.width = (800 / num) + "px";
+        div.style.height = (800 / num) + "px";
+        div.style.display = "inline-block";
+        grid.style.margin = "0 auto;"
+        grid.style.width = "100%";
+
+        div.addEventListener("mouseout", event => {
+            console.log("Mouse out");
+        });
+        div.addEventListener("mouseover", event => {
+            div.classList.add('color');
+        });
+    }; 
+
+
+  };
+
+firstGrid(num);
+
+function newGrid(num) {
+    const elem = document.querySelector(".grid");
+    elem.parentNode.removeChild(elem);
+    firstGrid(num);
+};
+
+const buttonClick = document.querySelector('.btn');
+    buttonClick.onclick = () => {
+        debugger;
+        console.log("click");
+        var numb = prompt("Enter a number");
+        var num = Number(numb);
+        console.log(typeof num);
+        newGrid(num);
+    };
+    </script>
+</html>
