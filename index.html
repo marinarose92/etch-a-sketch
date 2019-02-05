@@ -76,7 +76,9 @@ container.appendChild(grid);
             console.log("Mouse out");
         });
         div.addEventListener("mouseover", event => {
-            div.classList.add('color');
+            let randomColor = Math.floor(Math.random()*16777215).toString(16);
+            //div.classList.add('color');
+            div.style.backgroundColor = randomColor;
         });
     }; 
 
@@ -95,7 +97,7 @@ const buttonClick = document.querySelector('.btn');
     buttonClick.onclick = () => {
         debugger;
         console.log("click");
-        var numb = prompt("Enter a number");
+        var numb = prompt("What size grid do you want?");
         var num = Number(numb);
         console.log(typeof num);
         newGrid(num);
